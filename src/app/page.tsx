@@ -8,6 +8,7 @@ import ReactFlow, {
    useEdgesState,
    useReactFlow,
 } from 'reactflow'
+
 import dagre from 'dagre'
 
 import { initialNodes, initialEdges } from '../../nodes-edges'
@@ -15,12 +16,14 @@ import { initialNodes, initialEdges } from '../../nodes-edges'
 import 'reactflow/dist/style.css'
 
 const dagreGraph = new dagre.graphlib.Graph()
+
 dagreGraph.setDefaultEdgeLabel(() => ({}))
 
 const nodeWidth = 162
 const nodeHeight = 36
 
 let id = 1
+
 const getId = () => `node${id++}`
 
 const getLayoutedElements = (nodes, edges, direction = 'TB') => {
@@ -99,6 +102,7 @@ const LayoutFlow = () => {
             onNodesChange={onNodesChange}
             onEdgesChange={onEdgesChange}
             onConnect={onConnect}
+            // onEdgesDelete={onEdgesChange}
             connectionLineType={ConnectionLineType.SmoothStep}
             fitView>
             <Panel position='top-right'>
